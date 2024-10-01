@@ -1,0 +1,34 @@
+services:
+  animal-service:
+    build: ./teuPet-back-animalService
+    environment:
+      - MYSQL_ADDRESS=172.19.0.2
+    links:
+      - "mysql"
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+    # restart: on-failure
+
+  mysql:
+    image: "mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - db-data:/usr/db-data
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+
+volumes:
+  db-data:
+    name: "db-data"
+    external: true
+
+networks:
+  default:
+    name: "default-network1"
+    driver: bridge
+    external: true
