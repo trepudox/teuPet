@@ -1,4 +1,4 @@
-package com.trepudox.animal.core.dto;
+package com.trepudox.animal.core.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
@@ -10,10 +10,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AnimalDTO {
+public class CreateAnimalRequest {
 
-    private Long id;
-    private Long pessoaId;
     private String nome;
     private Long especie;
     private Long sexo;

@@ -1,5 +1,11 @@
 package com.trepudox.animal.core.model;
 
+import com.trepudox.animal.core.model.enums.EspecieEnum;
+import com.trepudox.animal.core.model.enums.PorteEnum;
+import com.trepudox.animal.core.model.enums.SexoEnum;
+import com.trepudox.animal.core.model.enums.converter.EspecieEnumConverter;
+import com.trepudox.animal.core.model.enums.converter.PorteEnumConverter;
+import com.trepudox.animal.core.model.enums.converter.SexoEnumConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,8 +23,8 @@ import java.time.LocalDate;
 public class AnimalModel {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "animal_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "pessoa_id", nullable = false)
@@ -27,17 +33,17 @@ public class AnimalModel {
     @Column(name = "nome")
     private String nome;
 
-    // ! TODO: Implementar enum de espécie
-    @Column(name = "especie_animal")
-    private String especie;
+    @Convert(converter = EspecieEnumConverter.class)
+    @Column(name = "especie_animal_id")
+    private EspecieEnum especie;
 
-    // ! TODO: Implementar enum de sexo
-    @Column(name = "sexo_animal")
-    private String sexo;
+    @Convert(converter = SexoEnumConverter.class)
+    @Column(name = "sexo_animal_id")
+    private SexoEnum sexo;
 
-    // ! TODO: Implementar enum de porte
-    @Column(name = "porte_animal")
-    private String porte;
+    @Convert(converter = PorteEnumConverter.class)
+    @Column(name = "porte_animal_id")
+    private PorteEnum porte;
 
     @Column(name = "peso")
     private Double peso;

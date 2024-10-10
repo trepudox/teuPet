@@ -1,14 +1,13 @@
 package com.trepudox.animal.core.controller;
 
 import com.trepudox.animal.core.dto.AnimalDTO;
+import com.trepudox.animal.core.dto.request.CreateAnimalRequest;
+import com.trepudox.animal.core.dto.request.UpdateAnimalRequest;
 import com.trepudox.animal.core.service.AnimalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,9 +18,9 @@ public class AnimalController {
 
     private final AnimalService animalService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AnimalDTO> getAnimalById(@PathVariable Long id) {
-        AnimalDTO animalDTO = animalService.getAnimalById(id);
+    @GetMapping("/{animalId}")
+    public ResponseEntity<AnimalDTO> getAnimalById(@PathVariable Long animalId) {
+        AnimalDTO animalDTO = animalService.getAnimalById(animalId);
 
         return new ResponseEntity<>(animalDTO, HttpStatus.OK);
     }
@@ -33,4 +32,24 @@ public class AnimalController {
         return new ResponseEntity<>(animals, HttpStatus.OK);
     }
 
+    @PostMapping("/pessoa/{pessoaId}")
+    public ResponseEntity<AnimalDTO> createAnimal(@PathVariable Long pessoaId, @RequestBody CreateAnimalRequest createAnimalRequest) {
+        AnimalDTO animal = animalService.createAnimal(pessoaId, createAnimalRequest);
+
+        return new ResponseEntity<>(animal, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{animalId}")
+    public ResponseEntity<AnimalDTO> updateAnimal(@PathVariable Long animalId, @RequestBody UpdateAnimalRequest updateAnimalRequest) {
+        AnimalDTO animal = animalService.updateAnimal(animalId, updateAnimalRequest);
+
+        return new ResponseEntity<>(animal, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{animalId}")
+    public ResponseEntity<Void> deleteAnimalById(@PathVariable Long animalId) {
+        animalService.deleteAnimal(animalId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

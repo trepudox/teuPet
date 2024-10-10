@@ -1,4 +1,4 @@
-package com.trepudox.animal.core.model;
+package com.trepudox.animal.core.model.enums;
 
 import lombok.Getter;
 
@@ -15,5 +15,12 @@ public enum EspecieEnum {
         this.label = label;
     }
 
+    public static EspecieEnum valueOf(Long id) {
+        for (EspecieEnum value : EspecieEnum.values())
+            if (value.getId().equals(id))
+                return value;
+
+        return null;
+    }
 
 }
