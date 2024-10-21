@@ -11,10 +11,12 @@ import com.trepudox.animal.core.model.enums.PorteEnum;
 import com.trepudox.animal.core.model.enums.SexoEnum;
 import com.trepudox.animal.core.repository.AnimalRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class AnimalService {
@@ -22,13 +24,19 @@ public class AnimalService {
     private final AnimalRepository animalRepository;
 
     public AnimalDTO getAnimalById(Long animalId) {
+        log.info("Buscando animal com ID {}", animalId);
+
         AnimalModel animalModel = animalRepository.findById(animalId)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Animal com ID '%s' não encontrado", animalId)));
+
+        log.info("Animal encontrado com sucesso");
 
         return AnimalMapper.INSTANCE.animalModelToAnimalDTO(animalModel);
     }
 
     public List<AnimalDTO> getAnimalsByPessoaId(Long pessoaId) {
+        log.info("Buscando animais da pessoa com ID {}", pessoaId);
+
         List<AnimalModel> animals = animalRepository.findAllByPessoaId(pessoaId);
 
         return animals.stream().map(AnimalMapper.INSTANCE::animalModelToAnimalDTO).toList();
@@ -44,19 +52,16 @@ public class AnimalService {
     }
 
     public AnimalDTO updateAnimal(Long animalId, UpdateAnimalRequest updateAnimalRequest) {
-        AnimalModel animalModel = animalRepository.findById(animalId)
+        AnimalModel animalModelToUpdate = animalRepository.findById(animalId)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Animal com ID '%s' não encontrado", animalId)));
+        Long idToUpdate = animalModelToUpdate.getId();
 
-        animalModel.setNome(updateAnimalRequest.getNome());
-        animalModel.setEspecie(EspecieEnum.valueOf(updateAnimalRequest.getEspecie()));
-        animalModel.setSexo(SexoEnum.valueOf(updateAnimalRequest.getSexo()));
-        animalModel.setPorte(PorteEnum.valueOf(updateAnimalRequest.getPorte()));
-        animalModel.setPeso(updateAnimalRequest.getPeso());
-        animalModel.setDataNascimento(updateAnimalRequest.getDataNascimento());
+        AnimalModel updatedAnimalModel = AnimalMapper.INSTANCE.updateAnimalRequestToAnimalModel(updateAnimalRequest);
+        updatedAnimalModel.setId(idToUpdate);
 
-        animalModel = animalRepository.save(animalModel);
+        updatedAnimalModel = animalRepository.save(updatedAnimalModel);
 
-        return AnimalMapper.INSTANCE.animalModelToAnimalDTO(animalModel);
+        return AnimalMapper.INSTANCE.animalModelToAnimalDTO(updatedAnimalModel);
     }
 
     public void deleteAnimal(Long animalId) {
