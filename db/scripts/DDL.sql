@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`animal` (
   `pessoa_id` INT NOT NULL,
   `especie_animal_id` INT NOT NULL,
   `sexo_animal_id` INT NOT NULL,
-  `porte_animal_id` INT NOT NULL,
+  `porte_animal_id` INT,
   `plano_saude_id` INT NOT NULL,
   `nome` VARCHAR(255) NOT NULL,
   `peso` FLOAT NOT NULL,
