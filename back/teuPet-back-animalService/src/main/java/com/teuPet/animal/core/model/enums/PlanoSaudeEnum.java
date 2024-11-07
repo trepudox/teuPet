@@ -3,23 +3,23 @@ package com.teupet.animal.core.model.enums;
 import lombok.Getter;
 
 @Getter
-public enum PorteEnum {
+public enum PlanoSaudeEnum {
 
-    PEQUENO(1L, "Pequeno"), MEDIO(2L, "Médio"), GRANDE(3L, "Grande"), NA(4L, "Não se aplica");
+    NENHUM(1L, "Nenhum"), BASICO(2L, "Básico"), PREMIUM(3L, "Premium");
 
     private final Long id;
     private final String label;
 
-    PorteEnum(Long id, String label) {
+    PlanoSaudeEnum(Long id, String label) {
         this.id = id;
         this.label = label;
     }
 
-    public static PorteEnum valueOf(Long id) {
+    public static PlanoSaudeEnum valueOf(Long id) {
         if (id == null)
             return null;
 
-        for (PorteEnum value : PorteEnum.values())
+        for (PlanoSaudeEnum value : PlanoSaudeEnum.values())
             if (value.getId().equals(id))
                 return value;
 
