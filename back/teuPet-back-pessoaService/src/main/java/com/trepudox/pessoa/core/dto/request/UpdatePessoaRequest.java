@@ -10,13 +10,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateAnimalRequest {
+public class UpdatePessoaRequest {
 
     private String nome;
-    private Long especie;
-    private Long sexo;
-    private Long porte;
-    private Double peso;
+    private String email;
+    private String telefone;
+    private String cpf;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataNascimento;
