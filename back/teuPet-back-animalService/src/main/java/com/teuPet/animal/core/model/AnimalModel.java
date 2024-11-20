@@ -1,8 +1,10 @@
 package com.teupet.animal.core.model;
 
 import com.teupet.animal.core.model.enums.EspecieEnum;
+import com.teupet.animal.core.model.enums.PlanoSaudeEnum;
 import com.teupet.animal.core.model.enums.SexoEnum;
 import com.teupet.animal.core.model.enums.converter.EspecieEnumConverter;
+import com.teupet.animal.core.model.enums.converter.PlanoSaudeEnumConverter;
 import com.teupet.animal.core.model.enums.converter.PorteEnumConverter;
 import com.teupet.animal.core.model.enums.converter.SexoEnumConverter;
 import com.teupet.animal.core.model.enums.PorteEnum;
@@ -44,6 +46,10 @@ public class AnimalModel {
     @Convert(converter = PorteEnumConverter.class)
     @Column(name = "porte_animal_id")
     private PorteEnum porte;
+
+    @Convert(converter = PlanoSaudeEnumConverter.class)
+    @Column(name = "plano_saude_id")
+    private PlanoSaudeEnum planoSaude;
 
     @Column(name = "peso")
     private Double peso;

@@ -16,6 +16,9 @@ public enum SexoEnum {
     }
 
     public static SexoEnum valueOf(Long id) {
+        if (id == null)
+            return null;
+
         for (SexoEnum value : SexoEnum.values())
             if (value.getId().equals(id))
                 return value;

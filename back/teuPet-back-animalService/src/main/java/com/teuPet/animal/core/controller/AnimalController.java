@@ -1,4 +1,4 @@
-package com.teupet.animal.controller;
+package com.teupet.animal.core.controller;
 
 import com.teupet.animal.core.dto.AnimalDTO;
 import com.teupet.animal.core.service.AnimalService;

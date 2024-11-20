@@ -13,9 +13,10 @@ import java.time.LocalDate;
 public class CreateAnimalRequest {
 
     private String nome;
-    private Long especie;
-    private Long sexo;
-    private Long porte;
+    private Long especieId;
+    private Long sexoId;
+    private Long porteId;
+    private Long planoSaudeId = 1L;
     private Double peso;
 
     @JsonFormat(pattern = "dd-MM-yyyy")

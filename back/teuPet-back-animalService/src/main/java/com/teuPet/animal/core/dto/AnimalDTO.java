@@ -15,9 +15,10 @@ public class AnimalDTO {
     private Long id;
     private Long pessoaId;
     private String nome;
-    private Long especie;
-    private Long sexo;
-    private Long porte;
+    private Long especieId;
+    private Long sexoId;
+    private Long porteId;
+    private Long planoSaudeId;
     private Double peso;
 
     @JsonFormat(pattern = "dd-MM-yyyy")

@@ -23,3 +23,10 @@ INSERT INTO porte_animal VALUES
 INSERT INTO sexo_animal VALUES 
 (1, 'Macho'),
 (2, 'Fêmea');
+
+
+-- DML plano_saude
+INSERT INTO plano_saude VALUES
+(1, 'Nenhum', 0, 0),
+(2, 'Básico', 24.99, 30),
+(3, 'Premium', 49.99, 15);

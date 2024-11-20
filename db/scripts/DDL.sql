@@ -1,12 +1,12 @@
-CREATE SCHEMA IF NOT EXISTS `teuPet` DEFAULT CHARACTER SET utf8 ;
-USE `teuPet` ;
+CREATE SCHEMA IF NOT EXISTS `teupet` DEFAULT CHARACTER SET utf8 ;
+USE `teupet` ;
 
 -- -----------------------------------------------------
--- Table `teuPet`.`pessoa`
+-- Table `teupet`.`pessoa`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`pessoa` ;
+-- DROP TABLE IF EXISTS `teupet`.`pessoa` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`pessoa` (
+CREATE TABLE IF NOT EXISTS `teupet`.`pessoa` (
   `pessoa_id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `data_nascimento` DATE NOT NULL,
@@ -22,11 +22,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`especie_animal`
+-- Table `teupet`.`especie_animal`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`especie_animal` ;
+-- DROP TABLE IF EXISTS `teupet`.`especie_animal` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`especie_animal` (
+CREATE TABLE IF NOT EXISTS `teupet`.`especie_animal` (
   `especie_animal_id` INT NOT NULL,
   `especie` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`especie_animal_id`),
@@ -36,11 +36,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`sexo_animal`
+-- Table `teupet`.`sexo_animal`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`sexo_animal` ;
+-- DROP TABLE IF EXISTS `teupet`.`sexo_animal` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`sexo_animal` (
+CREATE TABLE IF NOT EXISTS `teupet`.`sexo_animal` (
   `sexo_animal_id` INT NOT NULL,
   `sexo` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`sexo_animal_id`),
@@ -50,11 +50,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`porte_animal`
+-- Table `teupet`.`porte_animal`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`porte_animal` ;
+-- DROP TABLE IF EXISTS `teupet`.`porte_animal` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`porte_animal` (
+CREATE TABLE IF NOT EXISTS `teupet`.`porte_animal` (
   `porte_animal_id` INT NOT NULL,
   `porte` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`porte_animal_id`),
@@ -64,11 +64,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`plano_saude`
+-- Table `teupet`.`plano_saude`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`plano_saude` ;
+-- DROP TABLE IF EXISTS `teupet`.`plano_saude` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`plano_saude` (
+CREATE TABLE IF NOT EXISTS `teupet`.`plano_saude` (
   `plano_saude_id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   `preco` FLOAT NOT NULL,
@@ -80,11 +80,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`animal`
+-- Table `teupet`.`animal`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`animal` ;
+-- DROP TABLE IF EXISTS `teupet`.`animal` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`animal` (
+CREATE TABLE IF NOT EXISTS `teupet`.`animal` (
   `animal_id` INT NOT NULL AUTO_INCREMENT,
   `pessoa_id` INT NOT NULL,
   `especie_animal_id` INT NOT NULL,
@@ -103,38 +103,38 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`animal` (
   INDEX `fk_animal_plano_saude1_idx` (`plano_saude_id` ASC) VISIBLE,
   CONSTRAINT `fk_animal_pessoa`
     FOREIGN KEY (`pessoa_id`)
-    REFERENCES `teuPet`.`pessoa` (`pessoa_id`)
+    REFERENCES `teupet`.`pessoa` (`pessoa_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_animal_especie_animal1`
     FOREIGN KEY (`especie_animal_id`)
-    REFERENCES `teuPet`.`especie_animal` (`especie_animal_id`)
+    REFERENCES `teupet`.`especie_animal` (`especie_animal_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_animal_sexo_animal1`
     FOREIGN KEY (`sexo_animal_id`)
-    REFERENCES `teuPet`.`sexo_animal` (`sexo_animal_id`)
+    REFERENCES `teupet`.`sexo_animal` (`sexo_animal_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_animal_porte_animal1`
     FOREIGN KEY (`porte_animal_id`)
-    REFERENCES `teuPet`.`porte_animal` (`porte_animal_id`)
+    REFERENCES `teupet`.`porte_animal` (`porte_animal_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_animal_plano_saude1`
     FOREIGN KEY (`plano_saude_id`)
-    REFERENCES `teuPet`.`plano_saude` (`plano_saude_id`)
+    REFERENCES `teupet`.`plano_saude` (`plano_saude_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`endereco_pessoa`
+-- Table `teupet`.`endereco_pessoa`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`endereco_pessoa` ;
+-- DROP TABLE IF EXISTS `teupet`.`endereco_pessoa` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`endereco_pessoa` (
+CREATE TABLE IF NOT EXISTS `teupet`.`endereco_pessoa` (
   `endereco_pessoa_id` INT NOT NULL AUTO_INCREMENT,
   `pessoa_id` INT NOT NULL,
   `cep` VARCHAR(8) NOT NULL,
@@ -146,18 +146,18 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`endereco_pessoa` (
   UNIQUE INDEX `endereco_id_UNIQUE` (`endereco_pessoa_id` ASC) VISIBLE,
   CONSTRAINT `fk_endereco_pessoa1`
     FOREIGN KEY (`pessoa_id`)
-    REFERENCES `teuPet`.`pessoa` (`pessoa_id`)
+    REFERENCES `teupet`.`pessoa` (`pessoa_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`tipo_estabelecimento_associado`
+-- Table `teupet`.`tipo_estabelecimento_associado`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`tipo_estabelecimento_associado` ;
+-- DROP TABLE IF EXISTS `teupet`.`tipo_estabelecimento_associado` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`tipo_estabelecimento_associado` (
+CREATE TABLE IF NOT EXISTS `teupet`.`tipo_estabelecimento_associado` (
   `tipo_estabelecimento_associado_id` INT NOT NULL AUTO_INCREMENT,
   `tipo_estabelecimento_associado` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`tipo_estabelecimento_associado_id`),
@@ -167,11 +167,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`estabelecimento_associado`
+-- Table `teupet`.`estabelecimento_associado`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`estabelecimento_associado` ;
+-- DROP TABLE IF EXISTS `teupet`.`estabelecimento_associado` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`estabelecimento_associado` (
+CREATE TABLE IF NOT EXISTS `teupet`.`estabelecimento_associado` (
   `estabelecimento_associado_id` INT NOT NULL AUTO_INCREMENT,
   `tipo_estabelecimento_associado_id` INT NOT NULL,
   `nome_fantasia` VARCHAR(255) NOT NULL,
@@ -184,18 +184,18 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`estabelecimento_associado` (
   INDEX `fk_estabelecimento_associado_tipo_estabelecimento_associado_idx` (`tipo_estabelecimento_associado_id` ASC) VISIBLE,
   CONSTRAINT `fk_estabelecimento_associado_tipo_estabelecimento_associado1`
     FOREIGN KEY (`tipo_estabelecimento_associado_id`)
-    REFERENCES `teuPet`.`tipo_estabelecimento_associado` (`tipo_estabelecimento_associado_id`)
+    REFERENCES `teupet`.`tipo_estabelecimento_associado` (`tipo_estabelecimento_associado_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`endereco_estabelecimento_associado`
+-- Table `teupet`.`endereco_estabelecimento_associado`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`endereco_estabelecimento_associado` ;
+-- DROP TABLE IF EXISTS `teupet`.`endereco_estabelecimento_associado` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`endereco_estabelecimento_associado` (
+CREATE TABLE IF NOT EXISTS `teupet`.`endereco_estabelecimento_associado` (
   `endereco_estabelecimento_associado_id` INT NOT NULL AUTO_INCREMENT,
   `estabelecimento_associado_estabelecimento_associado_id` INT NOT NULL,
   `cep` VARCHAR(255) NOT NULL,
@@ -207,18 +207,18 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`endereco_estabelecimento_associado` (
   INDEX `fk_endereco_estabelecimento_associado_estabelecimento_assoc_idx` (`estabelecimento_associado_estabelecimento_associado_id` ASC) VISIBLE,
   CONSTRAINT `fk_endereco_estabelecimento_associado_estabelecimento_associa1`
     FOREIGN KEY (`estabelecimento_associado_estabelecimento_associado_id`)
-    REFERENCES `teuPet`.`estabelecimento_associado` (`estabelecimento_associado_id`)
+    REFERENCES `teupet`.`estabelecimento_associado` (`estabelecimento_associado_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`produto`
+-- Table `teupet`.`produto`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`produto` ;
+-- DROP TABLE IF EXISTS `teupet`.`produto` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`produto` (
+CREATE TABLE IF NOT EXISTS `teupet`.`produto` (
   `produto_id` INT NOT NULL AUTO_INCREMENT,
   `estabelecimento_associado_id` INT NOT NULL,
   `nome` VARCHAR(255) NOT NULL,
@@ -231,18 +231,18 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`produto` (
   INDEX `fk_produto_estabelecimento_associado1_idx` (`estabelecimento_associado_id` ASC) VISIBLE,
   CONSTRAINT `fk_produto_estabelecimento_associado1`
     FOREIGN KEY (`estabelecimento_associado_id`)
-    REFERENCES `teuPet`.`estabelecimento_associado` (`estabelecimento_associado_id`)
+    REFERENCES `teupet`.`estabelecimento_associado` (`estabelecimento_associado_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`pedido`
+-- Table `teupet`.`pedido`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`pedido` ;
+-- DROP TABLE IF EXISTS `teupet`.`pedido` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`pedido` (
+CREATE TABLE IF NOT EXISTS `teupet`.`pedido` (
   `pedido_id` INT NOT NULL AUTO_INCREMENT,
   `estabelecimento_associado_id` INT NOT NULL,
   `pessoa_id` INT NOT NULL,
@@ -258,23 +258,23 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`pedido` (
   INDEX `fk_pedido_pessoa1_idx` (`pessoa_id` ASC) VISIBLE,
   CONSTRAINT `fk_pedido_estabelecimento_associado1`
     FOREIGN KEY (`estabelecimento_associado_id`)
-    REFERENCES `teuPet`.`estabelecimento_associado` (`estabelecimento_associado_id`)
+    REFERENCES `teupet`.`estabelecimento_associado` (`estabelecimento_associado_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_pessoa1`
     FOREIGN KEY (`pessoa_id`)
-    REFERENCES `teuPet`.`pessoa` (`pessoa_id`)
+    REFERENCES `teupet`.`pessoa` (`pessoa_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`pedido_produto`
+-- Table `teupet`.`pedido_produto`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`pedido_produto` ;
+-- DROP TABLE IF EXISTS `teupet`.`pedido_produto` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`pedido_produto` (
+CREATE TABLE IF NOT EXISTS `teupet`.`pedido_produto` (
   `pedido_id` INT NOT NULL,
   `produto_id` INT NOT NULL,
   `quantidade` INT NOT NULL,
@@ -283,23 +283,23 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`pedido_produto` (
   INDEX `fk_pedido_has_produto_pedido1_idx` (`pedido_id` ASC) VISIBLE,
   CONSTRAINT `fk_pedido_has_produto_pedido1`
     FOREIGN KEY (`pedido_id`)
-    REFERENCES `teuPet`.`pedido` (`pedido_id`)
+    REFERENCES `teupet`.`pedido` (`pedido_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pedido_has_produto_produto1`
     FOREIGN KEY (`produto_id`)
-    REFERENCES `teuPet`.`produto` (`produto_id`)
+    REFERENCES `teupet`.`produto` (`produto_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`tipo_cobertura_procedimento`
+-- Table `teupet`.`tipo_cobertura_procedimento`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`tipo_cobertura_procedimento` ;
+-- DROP TABLE IF EXISTS `teupet`.`tipo_cobertura_procedimento` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`tipo_cobertura_procedimento` (
+CREATE TABLE IF NOT EXISTS `teupet`.`tipo_cobertura_procedimento` (
   `tipo_cobertura_procedimento_id` INT NOT NULL AUTO_INCREMENT,
   `tipo_cobertura_procedimento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`tipo_cobertura_procedimento_id`),
@@ -309,11 +309,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`cobertura_procedimento`
+-- Table `teupet`.`cobertura_procedimento`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`cobertura_procedimento` ;
+-- DROP TABLE IF EXISTS `teupet`.`cobertura_procedimento` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`cobertura_procedimento` (
+CREATE TABLE IF NOT EXISTS `teupet`.`cobertura_procedimento` (
   `cobertura_procedimento_id` INT NOT NULL AUTO_INCREMENT,
   `tipo_cobertura_procedimento_id` INT NOT NULL,
   `nome_procedimento` VARCHAR(255) NOT NULL,
@@ -323,18 +323,18 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`cobertura_procedimento` (
   INDEX `fk_cobertura_plano_saude_tipo_cobertura_plano_saude1_idx` (`tipo_cobertura_procedimento_id` ASC) VISIBLE,
   CONSTRAINT `fk_cobertura_plano_saude_tipo_cobertura_plano_saude1`
     FOREIGN KEY (`tipo_cobertura_procedimento_id`)
-    REFERENCES `teuPet`.`tipo_cobertura_procedimento` (`tipo_cobertura_procedimento_id`)
+    REFERENCES `teupet`.`tipo_cobertura_procedimento` (`tipo_cobertura_procedimento_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teuPet`.`plano_saude_procedimentos_cobertos`
+-- Table `teupet`.`plano_saude_procedimentos_cobertos`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `teuPet`.`plano_saude_procedimentos_cobertos` ;
+-- DROP TABLE IF EXISTS `teupet`.`plano_saude_procedimentos_cobertos` ;
 
-CREATE TABLE IF NOT EXISTS `teuPet`.`plano_saude_procedimentos_cobertos` (
+CREATE TABLE IF NOT EXISTS `teupet`.`plano_saude_procedimentos_cobertos` (
   `plano_saude_id` INT NOT NULL,
   `cobertura_procedimento_id` INT NOT NULL,
   PRIMARY KEY (`plano_saude_id`, `cobertura_procedimento_id`),
@@ -342,12 +342,12 @@ CREATE TABLE IF NOT EXISTS `teuPet`.`plano_saude_procedimentos_cobertos` (
   INDEX `fk_plano_saude_has_cobertura_plano_saude_plano_saude1_idx` (`plano_saude_id` ASC) VISIBLE,
   CONSTRAINT `fk_plano_saude_has_cobertura_plano_saude_plano_saude1`
     FOREIGN KEY (`plano_saude_id`)
-    REFERENCES `teuPet`.`plano_saude` (`plano_saude_id`)
+    REFERENCES `teupet`.`plano_saude` (`plano_saude_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_plano_saude_has_cobertura_plano_saude_cobertura_plano_saude1`
     FOREIGN KEY (`cobertura_procedimento_id`)
-    REFERENCES `teuPet`.`cobertura_procedimento` (`cobertura_procedimento_id`)
+    REFERENCES `teupet`.`cobertura_procedimento` (`cobertura_procedimento_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

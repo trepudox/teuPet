@@ -55,8 +55,9 @@ public class AnimalService {
 
         AnimalModel updatedAnimalModel = AnimalMapper.INSTANCE.updateAnimalRequestToAnimalModel(updateAnimalRequest);
         updatedAnimalModel.setId(idToUpdate);
+        updatedAnimalModel.setPessoaId(animalModelToUpdate.getPessoaId());
 
-        updatedAnimalModel = animalRepository.save(updatedAnimalModel);
+        updatedAnimalModel = animalRepository.saveAndFlush(updatedAnimalModel);
 
         return AnimalMapper.INSTANCE.animalModelToAnimalDTO(updatedAnimalModel);
     }

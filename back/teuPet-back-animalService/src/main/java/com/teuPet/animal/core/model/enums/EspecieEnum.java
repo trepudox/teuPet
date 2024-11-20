@@ -16,6 +16,9 @@ public enum EspecieEnum {
     }
 
     public static EspecieEnum valueOf(Long id) {
+        if (id == null)
+            return null;
+
         for (EspecieEnum value : EspecieEnum.values())
             if (value.getId().equals(id))
                 return value;

@@ -13,20 +13,23 @@ public interface AnimalMapper {
 
     AnimalMapper INSTANCE = Mappers.getMapper(AnimalMapper.class);
 
-    @Mapping(target = "especie", expression = "java(animalModel.getEspecie().getId())")
-    @Mapping(target = "sexo", expression = "java(animalModel.getSexo().getId())")
-    @Mapping(target = "porte", expression = "java(animalModel.getPorte().getId())")
+    @Mapping(target = "especieId", expression = "java(animalModel.getEspecie().getId())")
+    @Mapping(target = "sexoId", expression = "java(animalModel.getSexo().getId())")
+    @Mapping(target = "porteId", expression = "java(animalModel.getPorte().getId())")
+    @Mapping(target = "planoSaudeId", expression = "java(animalModel.getPlanoSaude().getId())")
     AnimalDTO animalModelToAnimalDTO(AnimalModel animalModel);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "especie", expression = "java(com.teupet.animal.core.model.enums.EspecieEnum.valueOf(createAnimalRequest.getEspecie()))")
-    @Mapping(target = "sexo", expression = "java(com.teupet.animal.core.model.enums.SexoEnum.valueOf(createAnimalRequest.getSexo()))")
-    @Mapping(target = "porte", expression = "java(com.teupet.animal.core.model.enums.PorteEnum.valueOf(createAnimalRequest.getPorte()))")
+    @Mapping(target = "especie", expression = "java(com.teupet.animal.core.model.enums.EspecieEnum.valueOf(createAnimalRequest.getEspecieId()))")
+    @Mapping(target = "sexo", expression = "java(com.teupet.animal.core.model.enums.SexoEnum.valueOf(createAnimalRequest.getSexoId()))")
+    @Mapping(target = "porte", expression = "java(com.teupet.animal.core.model.enums.PorteEnum.valueOf(createAnimalRequest.getPorteId()))")
+    @Mapping(target = "planoSaude", expression = "java(com.teupet.animal.core.model.enums.PlanoSaudeEnum.valueOf(createAnimalRequest.getPlanoSaudeId()))")
     AnimalModel createAnimalRequestToAnimalModel(CreateAnimalRequest createAnimalRequest);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "especie", expression = "java(com.teupet.animal.core.model.enums.EspecieEnum.valueOf(updateAnimalRequest.getEspecie()))")
-    @Mapping(target = "sexo", expression = "java(com.teupet.animal.core.model.enums.SexoEnum.valueOf(updateAnimalRequest.getSexo()))")
-    @Mapping(target = "porte", expression = "java(com.teupet.animal.core.model.enums.PorteEnum.valueOf(updateAnimalRequest.getPorte()))")
+    @Mapping(target = "especie", expression = "java(com.teupet.animal.core.model.enums.EspecieEnum.valueOf(updateAnimalRequest.getEspecieId()))")
+    @Mapping(target = "sexo", expression = "java(com.teupet.animal.core.model.enums.SexoEnum.valueOf(updateAnimalRequest.getSexoId()))")
+    @Mapping(target = "porte", expression = "java(com.teupet.animal.core.model.enums.PorteEnum.valueOf(updateAnimalRequest.getPorteId()))")
+    @Mapping(target = "planoSaude", expression = "java(com.teupet.animal.core.model.enums.PlanoSaudeEnum.valueOf(updateAnimalRequest.getPlanoSaudeId()))")
     AnimalModel updateAnimalRequestToAnimalModel(UpdateAnimalRequest updateAnimalRequest);
 }
