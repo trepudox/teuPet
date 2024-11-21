@@ -9,6 +9,4 @@ import java.util.List;
 @Repository
 public interface PessoaRepository extends JpaRepository<PessoaModel, Long> {
 
-    List<PessoaModel> findAllByPessoaId(Long pessoaId);
-
 }

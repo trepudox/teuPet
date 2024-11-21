@@ -24,9 +24,9 @@ public class PessoaController {
     }
 
 
-    @PostMapping("/pessoa/{pessoaId}")
-    public ResponseEntity<PessoaDTO> createPessoa(@PathVariable Long pessoaId, @RequestBody CreatePessoaRequest createPessoaRequest) {
-        PessoaDTO pessoa = pessoaService.createPessoa(pessoaId, createPessoaRequest);
+    @PostMapping
+    public ResponseEntity<PessoaDTO> createPessoa(@RequestBody CreatePessoaRequest createPessoaRequest) {
+        PessoaDTO pessoa = pessoaService.createPessoa(createPessoaRequest);
 
         return new ResponseEntity<>(pessoa, HttpStatus.CREATED);
     }

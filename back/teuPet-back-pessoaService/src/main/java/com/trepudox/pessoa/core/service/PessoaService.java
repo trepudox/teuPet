@@ -25,7 +25,7 @@ public class PessoaService {
         return PessoaMapper.INSTANCE.pessoaModelToPessoaDTO(pessoaModel);
     }
 
-    public PessoaDTO createPessoa(Long pessoaId, CreatePessoaRequest createPessoaRequest) {
+    public PessoaDTO createPessoa(CreatePessoaRequest createPessoaRequest) {
         PessoaModel pessoaModel = PessoaMapper.INSTANCE.createPessoaRequestToPessoaModel(createPessoaRequest);
 
         pessoaModel = pessoaRepository.save(pessoaModel);
