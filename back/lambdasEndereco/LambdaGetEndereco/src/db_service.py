@@ -1,4 +1,4 @@
-from config import logger
+from src.config import logger
 
 import pymysql
 
@@ -19,7 +19,7 @@ class DatabaseService:
 
         with self.connection.cursor() as cursor:
             cursor.execute(
-                'SELECT * FROM endereco WHERE pessoa_id = %s;',
+                'SELECT * FROM endereco_pessoa WHERE pessoa_id = %s;',
                 (pessoa_id,)
             )
 
@@ -30,7 +30,7 @@ class DatabaseService:
 
         with self.connection.cursor() as cursor:
             cursor.execute(
-                'SELECT * FROM endereco WHERE pessoa_id = %s AND endereco_id = %s;',
+                'SELECT * FROM endereco_pessoa WHERE pessoa_id = %s AND endereco_id = %s;',
                 (pessoa_id, endereco_id)
             )
 

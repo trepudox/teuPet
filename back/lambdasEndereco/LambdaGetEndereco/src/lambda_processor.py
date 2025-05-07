@@ -1,4 +1,4 @@
-from db_service import DatabaseService
+from src.db_service import DatabaseService
 
 
 def process(body, db_service: DatabaseService):
