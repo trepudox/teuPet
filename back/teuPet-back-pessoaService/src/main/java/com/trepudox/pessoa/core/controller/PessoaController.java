@@ -23,7 +23,6 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaDTO, HttpStatus.OK);
     }
 
-
     @PostMapping
     public ResponseEntity<PessoaDTO> createPessoa(@RequestBody CreatePessoaRequest createPessoaRequest) {
         PessoaDTO pessoa = pessoaService.createPessoa(createPessoaRequest);
