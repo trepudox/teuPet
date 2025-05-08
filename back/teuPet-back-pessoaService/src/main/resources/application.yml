@@ -10,7 +10,7 @@ spring:
       hibernate:
         format_sql: true
   datasource:
-    url: jdbc:mysql://${MYSQL_ADDRESS:localhost}:3306/teuPet?characterEncoding=UTF-8
+    url: jdbc:mysql://${MYSQL_ADDRESS:localhost}:3306/teupet?characterEncoding=UTF-8
     username: ${MYSQL_USERNAME:root}
     password: ${MYSQL_PASSWORD:root}
     driver-class: com.mysql.cj.jdbc.Driver

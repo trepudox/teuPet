@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.trepudox</groupId>
-	<artifactId>animalService</artifactId>
+	<artifactId>pessoaService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PessoaService</name>
 	<description>Microsserviço de Pessoa do projeto TeuPet</description>
